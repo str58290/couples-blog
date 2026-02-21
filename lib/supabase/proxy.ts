@@ -33,6 +33,10 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser()
 
+  if (!user) {
+    // Optional: Log or handle anonymous access if needed
+  }
+
   // Redirect unauthenticated users to login for all routes except auth pages and api
   if (
     !user &&
